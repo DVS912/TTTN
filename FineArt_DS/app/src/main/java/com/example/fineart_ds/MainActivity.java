@@ -1,5 +1,6 @@
 package com.example.fineart_ds;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
@@ -17,6 +19,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
+import com.example.fineart_ds.activity.CayBonSaiGoActivity;
+import com.example.fineart_ds.activity.ChinhSachActivity;
+import com.example.fineart_ds.activity.InfoActivity;
+import com.example.fineart_ds.activity.LocBinhPhongThuyActivity;
+import com.example.fineart_ds.activity.LoginActivity;
+import com.example.fineart_ds.activity.TranhGoActivity;
+import com.example.fineart_ds.activity.TuongGoPhongThuyActivity;
+import com.example.fineart_ds.activity.TuongLinhVat;
 import com.example.fineart_ds.adapter.ProductAdapter;
 import com.example.fineart_ds.adapter.ProductTypeAdapter;
 import com.example.fineart_ds.model.Product;
@@ -78,12 +88,117 @@ public class MainActivity extends AppCompatActivity {
             actionViewFlipper();
             getProductTypeData();
             getNewProductData();
+            catchOnItemListView();
         }else {
             CheckConnection.showToast(getApplicationContext(),"Ứng dụng này yêu cầu kết nối mạng."+"\r\n"
             +"Vui lòng kiểm tra lại kết nối !");
             finish();
         }
 
+    }
+
+    private void catchOnItemListView() {
+        listHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 1:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 2:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, TuongGoPhongThuyActivity.class);
+                            intent.putExtra("productTypeID",arrayListProductType.get(position--).getId());
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 3:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, TuongLinhVat.class);
+                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 4:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, TranhGoActivity.class);
+                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 5:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, CayBonSaiGoActivity.class);
+                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 6:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, LocBinhPhongThuyActivity.class);
+                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 7:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, ChinhSachActivity.class);
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case 8:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                            startActivity(intent);
+                        }else {
+                            CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                }
+            }
+        });
     }
 
     private void getNewProductData() {
