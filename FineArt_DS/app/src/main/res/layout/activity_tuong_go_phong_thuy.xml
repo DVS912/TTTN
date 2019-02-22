@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.fineart_ds.activity.TuongGoPhongThuyActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarTuongGoPhongThuy"
         android:background="#BD9898"
@@ -16,6 +17,7 @@
 
     <ListView
         android:id="@+id/listviewTuongGoPhongThuy"
+        android:background="#BD9898"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>
