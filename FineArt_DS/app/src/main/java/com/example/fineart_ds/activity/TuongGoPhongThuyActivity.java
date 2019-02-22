@@ -1,10 +1,16 @@
 package com.example.fineart_ds.activity;
 
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.AuthFailureError;
@@ -35,6 +41,10 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
     ArrayList<Product> arrayListTuongGo;
     int idTuongGo = 0;
     int page = 1;
+    View footerView;
+    boolean isLoading = false;
+    mHandler mHandler;
+    boolean limitData = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +55,47 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
         arrayListTuongGo = new ArrayList<>();
         tuongGoPhongThuyAdapter = new TuongGoPhongThuyAdapter(getApplicationContext(), arrayListTuongGo);
         listViewTuongGo.setAdapter(tuongGoPhongThuyAdapter);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        footerView = inflater.inflate(R.layout.progressbar, null);
+
         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
             getIDProductType();
             actionToolbar();
             getData(page);
+            loadmoreData();
+            mHandler = new mHandler();
+
         }else {
             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
             finish();
         }
 
+    }
+
+    private void loadmoreData() {
+        listViewTuongGo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
+                intent.putExtra("productProperty", arrayListTuongGo.get(position));
+                startActivity(intent);
+            }
+        });
+        listViewTuongGo.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if(firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0 && isLoading ==false && limitData == false){
+                    isLoading = true;
+                    ThreadData threadData = new ThreadData();
+                    threadData.start();
+                }
+            }
+        });
     }
 
     private void getData(int Page) {
@@ -68,7 +110,8 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
                 String image = "";
                 String mota ="";
                 int idloaisanpham = 0;
-                if(response != null){
+                if(response != null && response.length() != 2){
+                    listViewTuongGo.removeFooterView(footerView);
                     try {
                         JSONArray jsonArray = new JSONArray(response);
                         for(int i = 0; i<jsonArray.length(); i++){
@@ -86,6 +129,10 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                }else {
+                    limitData = true;
+                    listViewTuongGo.removeFooterView(footerView);
+                    CheckConnection.showToast(getApplicationContext(),"Đã hết dữ liệu !");
                 }
             }
         }, new Response.ErrorListener() {
@@ -119,5 +166,36 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
     private void getIDProductType() {
         idTuongGo = getIntent().getIntExtra("product_type_id", -1);
         Log.d("giatriloaisp", idTuongGo+"");
+    }
+
+    public class mHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 0:
+                    listViewTuongGo.addFooterView(footerView);
+                    break;
+                case 1:
+                    getData(++page);
+                    isLoading = false;
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    }
+
+    public class ThreadData extends Thread{
+        @Override
+        public void run() {
+            mHandler.sendEmptyMessage(0);
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Message message = mHandler.obtainMessage(1);
+            mHandler.sendMessage(message);
+            super.run();
+        }
     }
 }

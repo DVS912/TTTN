@@ -29,6 +29,7 @@ import com.example.fineart_ds.activity.TuongGoPhongThuyActivity;
 import com.example.fineart_ds.activity.TuongLinhVat;
 import com.example.fineart_ds.adapter.ProductAdapter;
 import com.example.fineart_ds.adapter.ProductTypeAdapter;
+import com.example.fineart_ds.adapter.TuongGoPhongThuyAdapter;
 import com.example.fineart_ds.model.Product;
 import com.example.fineart_ds.model.ProductType;
 import com.example.fineart_ds.util.CheckConnection;
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     case 3:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, TuongLinhVat.class);
-                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                     case 4:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, TranhGoActivity.class);
-                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position-1).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -158,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     case 5:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, CayBonSaiGoActivity.class);
-                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position-1).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -169,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                     case 6:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, LocBinhPhongThuyActivity.class);
-                            intent.putExtra("productTypeID",arrayListProductType.get(position-1).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position-1).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");

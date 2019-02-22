@@ -1,6 +1,8 @@
 package com.example.fineart_ds.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     public int product_id;
     public String productName;
     public String productPrice;
