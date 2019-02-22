@@ -21,8 +21,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.fineart_ds.R;
-import com.example.fineart_ds.adapter.TranhGoAdapter;
 import com.example.fineart_ds.adapter.TuongGoPhongThuyAdapter;
+import com.example.fineart_ds.adapter.TuongLinhVatAdapter;
 import com.example.fineart_ds.model.Product;
 import com.example.fineart_ds.util.CheckConnection;
 import com.example.fineart_ds.util.Server;
@@ -35,12 +35,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TranhGoActivity extends AppCompatActivity {
-    Toolbar toolbarTranhGo;
-    ListView listViewTranhGo;
-    TranhGoAdapter tranhGoAdapter;
-    ArrayList<Product> arrayListTranhGo;
-    int idTranhGo = 0;
+public class TuongLinhVatActivity extends AppCompatActivity {
+    Toolbar toolbarTuongLinhVat;
+    ListView listViewTuongLinhVat;
+    TuongLinhVatAdapter tuongLinhVatAdapter;
+    ArrayList<Product> arrayListTuongLinhVat;
+    int idTuongLinhVat = 0;
     int page = 1;
     View footerView;
     boolean isLoading = false;
@@ -50,12 +50,12 @@ public class TranhGoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tranh_go);
-        toolbarTranhGo=findViewById(R.id.toolbarTranhGo);
-        listViewTranhGo=findViewById(R.id.listViewTranhGo);
-        arrayListTranhGo = new ArrayList<>();
-        tranhGoAdapter = new TranhGoAdapter(getApplicationContext(), arrayListTranhGo);
-        listViewTranhGo.setAdapter(tranhGoAdapter);
+        setContentView(R.layout.activity_tuong_linh_vat);
+        toolbarTuongLinhVat=findViewById(R.id.toolbarTuongLinhVat);
+        listViewTuongLinhVat=findViewById(R.id.listviewTuongLinhVat);
+        arrayListTuongLinhVat = new ArrayList<>();
+        tuongLinhVatAdapter = new TuongLinhVatAdapter(getApplicationContext(), arrayListTuongLinhVat);
+        listViewTuongLinhVat.setAdapter(tuongLinhVatAdapter);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerView = inflater.inflate(R.layout.progressbar, null);
 
@@ -74,15 +74,15 @@ public class TranhGoActivity extends AppCompatActivity {
     }
 
     private void loadmoreData() {
-        listViewTranhGo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewTuongLinhVat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
-                intent.putExtra("productProperty", arrayListTranhGo.get(position));
+                intent.putExtra("productProperty", arrayListTuongLinhVat.get(position));
                 startActivity(intent);
             }
         });
-        listViewTranhGo.setOnScrollListener(new AbsListView.OnScrollListener() {
+        listViewTuongLinhVat.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
 
@@ -112,7 +112,7 @@ public class TranhGoActivity extends AppCompatActivity {
                 String mota ="";
                 int idloaisanpham = 0;
                 if(response != null && response.length() != 2){
-                    listViewTranhGo.removeFooterView(footerView);
+                    listViewTuongLinhVat.removeFooterView(footerView);
                     try {
                         JSONArray jsonArray = new JSONArray(response);
                         for(int i = 0; i<jsonArray.length(); i++){
@@ -124,15 +124,15 @@ public class TranhGoActivity extends AppCompatActivity {
                             mota = jsonObject.getString("product_description");
                             idloaisanpham = jsonObject.getInt("product_type_id");
 
-                            arrayListTranhGo.add(new Product(id, name, price, image, mota, idloaisanpham));
-                            tranhGoAdapter.notifyDataSetChanged();
+                            arrayListTuongLinhVat.add(new Product(id, name, price, image, mota, idloaisanpham));
+                            tuongLinhVatAdapter.notifyDataSetChanged();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }else {
                     limitData = true;
-                    listViewTranhGo.removeFooterView(footerView);
+                    listViewTuongLinhVat.removeFooterView(footerView);
                     CheckConnection.showToast(getApplicationContext(),"Đã hết dữ liệu !");
                 }
             }
@@ -146,7 +146,7 @@ public class TranhGoActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> param;
                 param = new HashMap<String, String>();
-                param.put("product_type_id",String.valueOf(idTranhGo));
+                param.put("product_type_id",String.valueOf(idTuongLinhVat));
                 return param;
             }
         };
@@ -154,9 +154,9 @@ public class TranhGoActivity extends AppCompatActivity {
     }
 
     private void actionToolbar() {
-        setSupportActionBar(toolbarTranhGo);
+        setSupportActionBar(toolbarTuongLinhVat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbarTranhGo.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbarTuongLinhVat.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -165,8 +165,8 @@ public class TranhGoActivity extends AppCompatActivity {
     }
 
     private void getIDProductType() {
-        idTranhGo = getIntent().getIntExtra("product_type_id", -1);
-        Log.d("giatriloaisp", idTranhGo+"");
+        idTuongLinhVat = getIntent().getIntExtra("product_type_id", -1);
+        Log.d("giatriloaisp", idTuongLinhVat+"");
     }
 
     public class mHandler extends Handler{
@@ -174,7 +174,7 @@ public class TranhGoActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 0:
-                    listViewTranhGo.addFooterView(footerView);
+                    listViewTuongLinhVat.addFooterView(footerView);
                     break;
                 case 1:
                     getData(++page);

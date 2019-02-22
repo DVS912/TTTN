@@ -19,7 +19,7 @@
         <activity android:name=".activity.LocBinhPhongThuyActivity" />
         <activity android:name=".activity.CayBonSaiGoActivity" />
         <activity android:name=".activity.TranhGoActivity" />
-        <activity android:name=".activity.TuongLinhVat" />
+        <activity android:name=".activity.TuongLinhVatActivity" />
         <activity android:name=".activity.TuongGoPhongThuyActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

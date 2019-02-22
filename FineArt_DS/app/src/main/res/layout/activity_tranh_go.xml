@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.fineart_ds.activity.TranhGoActivity">
+    tools:context="com.example.fineart_ds.activity.TuongGoPhongThuyActivity"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarTranhGo"
+        android:background="#BD9898"
+        app:titleTextColor="#fff"
+        app:title="Tranh Gỗ"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
 
-</android.support.constraint.ConstraintLayout>
+    <ListView
+        android:id="@+id/listViewTranhGo"
+        android:background="#BD9898"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>

@@ -100,7 +100,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
 
     private void getData(int Page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String url = Server.urlTuongGo+String.valueOf(page);
+        String url = Server.urlLoadProduct+String.valueOf(page);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

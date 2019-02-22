@@ -26,10 +26,9 @@ import com.example.fineart_ds.activity.LocBinhPhongThuyActivity;
 import com.example.fineart_ds.activity.LoginActivity;
 import com.example.fineart_ds.activity.TranhGoActivity;
 import com.example.fineart_ds.activity.TuongGoPhongThuyActivity;
-import com.example.fineart_ds.activity.TuongLinhVat;
+import com.example.fineart_ds.activity.TuongLinhVatActivity;
 import com.example.fineart_ds.adapter.ProductAdapter;
 import com.example.fineart_ds.adapter.ProductTypeAdapter;
-import com.example.fineart_ds.adapter.TuongGoPhongThuyAdapter;
 import com.example.fineart_ds.model.Product;
 import com.example.fineart_ds.model.ProductType;
 import com.example.fineart_ds.util.CheckConnection;
@@ -136,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case 3:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent(MainActivity.this, TuongLinhVat.class);
+                            Intent intent = new Intent(MainActivity.this, TuongLinhVatActivity.class);
                             intent.putExtra("product_type_id",arrayListProductType.get(position).getId());
                             startActivity(intent);
                         }else {
@@ -148,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     case 4:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, TranhGoActivity.class);
-                            intent.putExtra("product_type_id",arrayListProductType.get(position-1).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -159,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                     case 5:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, CayBonSaiGoActivity.class);
-                            intent.putExtra("product_type_id",arrayListProductType.get(position-1).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -170,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     case 6:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, LocBinhPhongThuyActivity.class);
-                            intent.putExtra("product_type_id",arrayListProductType.get(position-1).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -292,9 +291,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void actionViewFlipper() {
         ArrayList<String> quangcao = new ArrayList<>();
-        quangcao.add("https://drive.google.com/uc?id=159XnylDYFXjIgdP2AfRPC5Y7BbtEL-Z0");
-        quangcao.add("https://drive.google.com/uc?id=1nY_xp5s1CRK95iOZqus-voNFaa91ENBU");
-        quangcao.add("https://drive.google.com/uc?id=1XsgMVb8QeAhL2ldUmiPR7wRx8igBwI_m");
+        quangcao.add("http://gomynghevn.com/image/banner/banner1.jpg");
+        quangcao.add("http://gomynghevn.com/image/banner/banner2.png");
+        quangcao.add("http://gomynghevn.com/image/banner/banner3.png");
         for (int i=0; i<quangcao.size(); i++){
             ImageView imageView = new ImageView(getApplicationContext());
             Picasso.with(getApplicationContext()).load(quangcao.get(i)).into(imageView);

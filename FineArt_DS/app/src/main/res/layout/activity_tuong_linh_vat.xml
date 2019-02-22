@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.fineart_ds.activity.TuongLinhVat">
+    tools:context="com.example.fineart_ds.activity.TuongLinhVatActivity"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarTuongLinhVat"
+        android:background="#BD9898"
+        app:titleTextColor="#fff"
+        app:title="Tượng Linh Vật"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
 
-</android.support.constraint.ConstraintLayout>
+    <ListView
+        android:id="@+id/listviewTuongLinhVat"
+        android:background="#BD9898"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>
