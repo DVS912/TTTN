@@ -18,7 +18,7 @@
                 android:id="@+id/homeToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Trang chính"
+                app:title="Gỗ Mỹ Nghệ VN"
                 android:background="#ff00"></android.support.v7.widget.Toolbar>
             <ViewFlipper
                 android:id="@+id/viewFlipper"

@@ -33,7 +33,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
     ListView listViewTuongGo;
     TuongGoPhongThuyAdapter tuongGoPhongThuyAdapter;
     ArrayList<Product> arrayListTuongGo;
-    int idTuongGo = 1;
+    int idTuongGo = 0;
     int page = 1;
 
     @Override
@@ -67,7 +67,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
                 String price = "";
                 String image = "";
                 String mota ="";
-                int idloaisanpham = 1;
+                int idloaisanpham = 0;
                 if(response != null){
                     try {
                         JSONArray jsonArray = new JSONArray(response);
@@ -96,8 +96,9 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> param = new HashMap<String, String>();
-                param.put("productTypeID",String.valueOf(idTuongGo));
+                HashMap<String, String> param;
+                param = new HashMap<String, String>();
+                param.put("product_type_id",String.valueOf(idTuongGo));
                 return param;
             }
         };
@@ -116,7 +117,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
     }
 
     private void getIDProductType() {
-        idTuongGo = getIntent().getIntExtra("productTypeID", 1);
+        idTuongGo = getIntent().getIntExtra("product_type_id", -1);
         Log.d("giatriloaisp", idTuongGo+"");
     }
 }

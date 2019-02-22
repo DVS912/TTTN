@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:background="#fff"
             android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 <TextView
                     android:id="@+id/textViewTuongGoPhongThuy"
                     android:text="Tên sp"
-                    android:textColor="#613838"
+                    android:textColor="#11B119"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
                     android:id="@+id/textViewGiaTuongGo"
                     android:text="Giá sp"
                     android:layout_margin="5dp"
-                    android:textColor="#613838"
+                    android:textColor="#CF5C26"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"

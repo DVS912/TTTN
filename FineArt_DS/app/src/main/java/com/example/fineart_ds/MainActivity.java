@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent = new Intent(MainActivity.this, TuongGoPhongThuyActivity.class);
-                            intent.putExtra("productTypeID",arrayListProductType.get(position--).getId());
+                            intent.putExtra("product_type_id",arrayListProductType.get(position).getId());
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
