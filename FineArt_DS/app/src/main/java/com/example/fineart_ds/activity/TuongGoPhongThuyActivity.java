@@ -20,7 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fineart_ds.MainActivity;
 import com.example.fineart_ds.R;
+import com.example.fineart_ds.ViewSanPham;
 import com.example.fineart_ds.adapter.TuongGoPhongThuyAdapter;
 import com.example.fineart_ds.model.Product;
 import com.example.fineart_ds.util.CheckConnection;
@@ -58,6 +60,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerView = inflater.inflate(R.layout.progressbar, null);
 
+
         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
             getIDProductType();
             actionToolbar();
@@ -78,6 +81,12 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
                 intent.putExtra("productProperty", arrayListTuongGo.get(position));
+                intent.putExtra("productNameTG",arrayListTuongGo.get(position).getProductName());
+                intent.putExtra("productDescriptionTG",arrayListTuongGo.get(position).getProductDescription());
+                intent.putExtra("productImgTG",arrayListTuongGo.get(position).getProductImage());
+                intent.putExtra("productPriceTG",arrayListTuongGo.get(position).getProductPrice());
+                intent.putExtra("productTypeIDTG",arrayListTuongGo.get(position).getProductTypeID());
+
                 startActivity(intent);
             }
         });

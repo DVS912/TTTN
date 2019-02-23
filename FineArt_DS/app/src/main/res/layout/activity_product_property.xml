@@ -6,4 +6,105 @@
     android:layout_height="match_parent"
     tools:context="com.example.fineart_ds.activity.ProductProperty">
 
+    <ImageView
+        android:id="@+id/imageViewSP"
+        android:layout_width="match_parent"
+        android:layout_height="255dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textViewTenSP"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Ten san pham"
+        android:textColor="#0b0b0b"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSP" />
+
+    <TextView
+        android:id="@+id/textViewGiaTien"
+        android:layout_width="124dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:text="Gia tien"
+        android:textColor="#f40808"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewLienHe"
+        app:layout_constraintStart_toEndOf="@+id/textViewTrangThai"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTenSP" />
+
+    <TextView
+        android:id="@+id/textViewDiaChi"
+        android:layout_width="0dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Dia chi mua hang"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGiaTien" />
+
+    <Button
+        android:id="@+id/buttonMuaHang"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Mua Hang"
+        android:background="#ff00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDiaChi" />
+
+    <TextView
+        android:id="@+id/textViewTrangThai"
+        android:layout_width="105dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Con hang"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTenSP" />
+
+    <TextView
+        android:id="@+id/textViewLienHe"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_width="137dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Lien he"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTenSP" />
+
 </android.support.constraint.ConstraintLayout>

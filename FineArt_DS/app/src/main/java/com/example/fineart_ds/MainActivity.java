@@ -20,7 +20,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
 import com.example.fineart_ds.activity.CayBonSaiGoActivity;
-import com.example.fineart_ds.activity.ChinhSachActivity;
 import com.example.fineart_ds.activity.CustomAdapterSanPham;
 import com.example.fineart_ds.activity.InfoActivity;
 import com.example.fineart_ds.activity.LocBinhPhongThuyActivity;
@@ -82,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 "http://gomynghevn.com/image/icon/login_icon.png"));
         productTypeAdapter = new ProductTypeAdapter(arrayListProductType, getApplicationContext());
         listHome.setAdapter(productTypeAdapter);
+
 
         //productAdapter = new ProductAdapter(getApplicationContext(), arrayListProduct);
         //recHome.setHasFixedSize(true);
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case 7:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent(MainActivity.this, ChinhSachActivity.class);
+                            Intent intent = new Intent(MainActivity.this, ChinhSach.class);
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -214,10 +214,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case 8:
-                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-                            startActivity(intent);
-                        }else {
+                       if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                           Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                           startActivity(intent);
+                       }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
                         }
                         drawerLayout.closeDrawer(GravityCompat.START);

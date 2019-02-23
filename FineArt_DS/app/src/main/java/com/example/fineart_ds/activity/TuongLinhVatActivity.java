@@ -74,14 +74,14 @@ public class TuongLinhVatActivity extends AppCompatActivity {
     }
 
     private void loadmoreData() {
-        listViewTuongLinhVat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
-                intent.putExtra("productProperty", arrayListTuongLinhVat.get(position));
-                startActivity(intent);
-            }
-        });
+       // listViewTuongLinhVat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       //     @Override
+       //     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+       //         Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
+       //         intent.putExtra("productProperty", arrayListTuongLinhVat.get(position));
+       //         startActivity(intent);
+       //     }
+       // });
         listViewTuongLinhVat.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {

@@ -41,6 +41,9 @@ public class ViewSanPham extends AppCompatActivity {
         Uri uri = Uri.parse(intent.getStringExtra("productImg").toString());
         Picasso.with(this).load(uri).into(imgSP);
 
+
+
+
         btnMuaHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

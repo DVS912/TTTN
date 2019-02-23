@@ -74,14 +74,15 @@ public class CayBonSaiGoActivity extends AppCompatActivity {
     }
 
     private void loadmoreData() {
-        listViewCayBonSaiGo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
-                intent.putExtra("productProperty", arrayListCayBonSaiGo.get(position));
-                startActivity(intent);
-            }
-        });
+        //listViewCayBonSaiGo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+         //   @Override
+         //   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+         //       Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
+         //       intent.putExtra("productProperty", arrayListCayBonSaiGo.get(position));
+         //
+          //      startActivity(intent);
+          //  }
+       // });
         listViewCayBonSaiGo.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
