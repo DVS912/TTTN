@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
 import com.example.fineart_ds.activity.CayBonSaiGoActivity;
 import com.example.fineart_ds.activity.ChinhSachActivity;
+import com.example.fineart_ds.activity.CustomAdapterSanPham;
 import com.example.fineart_ds.activity.InfoActivity;
 import com.example.fineart_ds.activity.LocBinhPhongThuyActivity;
 import com.example.fineart_ds.activity.LoginActivity;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     String productTypeImage= "";
     ArrayList<Product> arrayListProduct;
     ProductAdapter productAdapter;
+    GridView gridSanPham;
+    CustomAdapterSanPham customAdapterSanPham;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView=findViewById(R.id.naviView);
         listHome=findViewById(R.id.listHome);
         drawerLayout=findViewById(R.id.drawerLayout);
+        gridSanPham = findViewById(R.id.GripViewSanPham);
         arrayListProductType = new ArrayList<>();
         arrayListProductType.add(0,new ProductType(0, "Trang Chính",
                 "http://gomynghevn.com/image/icon/home_icon.png"));
@@ -78,11 +82,33 @@ public class MainActivity extends AppCompatActivity {
                 "http://gomynghevn.com/image/icon/login_icon.png"));
         productTypeAdapter = new ProductTypeAdapter(arrayListProductType, getApplicationContext());
         listHome.setAdapter(productTypeAdapter);
+
+        //productAdapter = new ProductAdapter(getApplicationContext(), arrayListProduct);
+        //recHome.setHasFixedSize(true);
+        //recHome.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+        //recHome.setAdapter(productAdapter);
+
+        // Custom adapter product
         arrayListProduct = new ArrayList<>();
-        productAdapter = new ProductAdapter(getApplicationContext(), arrayListProduct);
-        recHome.setHasFixedSize(true);
-        recHome.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-        recHome.setAdapter(productAdapter);
+        customAdapterSanPham = new CustomAdapterSanPham(this,R.layout.line_new_product,arrayListProduct);
+        gridSanPham.setAdapter(customAdapterSanPham);
+
+
+        // sự kiện click và gửi thông tin Intent
+        gridSanPham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, ViewSanPham.class);
+                intent.putExtra("productName",arrayListProduct.get(position).getProductName());
+                intent.putExtra("productDescription",arrayListProduct.get(position).getProductDescription());
+                intent.putExtra("productImg",arrayListProduct.get(position).getProductImage());
+                intent.putExtra("productPrice",arrayListProduct.get(position).getProductPrice());
+                intent.putExtra("productTypeID",arrayListProduct.get(position).getProductTypeID());
+
+
+                startActivity(intent);
+            }
+        });
         if (CheckConnection.haveNetworkConnection(getApplicationContext())){
             actionBar();
             actionViewFlipper();
@@ -112,9 +138,9 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
-                    case 1:
+                   case 1:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                           Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -224,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
                             productDescription = jsonObject.getString("product_description");
                             productTypeID = jsonObject.getInt("product_type_id");
                             arrayListProduct.add(new Product(productID,productName, productPrice, productImage, productDescription, productTypeID));
-                            productAdapter.notifyDataSetChanged();
+                            customAdapterSanPham.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

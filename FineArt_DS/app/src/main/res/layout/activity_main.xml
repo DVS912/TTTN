@@ -44,6 +44,11 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/recViewHome">
                 </android.support.v7.widget.RecyclerView>
+                <GridView
+                    android:id="@+id/GripViewSanPham"
+                    android:layout_width="match_parent"
+                    android:numColumns="2"
+                    android:layout_height="match_parent"/>
             </LinearLayout>
         </LinearLayout>
         <android.support.design.widget.NavigationView
