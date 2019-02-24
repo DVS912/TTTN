@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Sự kiện click item thanh menu
     private void catchOnItemListView() {
         listHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -227,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //Lấy dữ liệu sản phẩm
     private void getNewProductData() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.urlNewProduct, new Response.Listener<JSONArray>() {
@@ -267,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
+    //Lấy dữ liệu kiểu sản phẩm
     private void getProductTypeData() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.urlProductType, new Response.Listener<JSONArray>() {
@@ -314,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    //Lấy dữ liệu cho banner
     private void actionViewFlipper() {
         ArrayList<String> quangcao = new ArrayList<>();
         quangcao.add("http://gomynghevn.com/image/banner/banner1.jpg");
