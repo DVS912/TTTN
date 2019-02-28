@@ -8,17 +8,35 @@
     android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="Xác nhận thông tin"
+        android:textSize="24dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/editText5"
         android:layout_width="321dp"
         android:layout_height="46dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Tên người dùng"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
         android:id="@+id/editText6"
@@ -75,7 +93,7 @@
         android:id="@+id/buttonXacNhan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Xác nhận"
@@ -88,7 +106,7 @@
         android:id="@+id/buttonHuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:text="Hủy"

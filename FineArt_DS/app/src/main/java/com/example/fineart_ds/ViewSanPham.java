@@ -48,7 +48,7 @@ public class ViewSanPham extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(ViewSanPham.this);
-                dialog.setTitle("Xác nhận thông tin");
+
                 dialog.setContentView(R.layout.custom_dialog_mua_hang);
                 Button btnXacNhan = dialog.findViewById(R.id.buttonXacNhan);
                 Button btnHuy = dialog.findViewById(R.id.buttonHuy);

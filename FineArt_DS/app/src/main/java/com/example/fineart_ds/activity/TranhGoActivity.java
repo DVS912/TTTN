@@ -74,14 +74,17 @@ public class TranhGoActivity extends AppCompatActivity {
     }
 
     private void loadmoreData() {
-      //  listViewTranhGo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      //      @Override
-      //      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       //         Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
-       //         intent.putExtra("productProperty", arrayListTranhGo.get(position));
-       //         startActivity(intent);
-      //      }
-      //  });
+        listViewTranhGo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("TTT", arrayListTranhGo.get(position));
+                intent.putExtra("BUN", bundle);
+
+                startActivity(intent);
+            }
+        });
         listViewTranhGo.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {

@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/textViewTenAdmin"
         android:layout_width="0dp"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="40dp"
@@ -25,7 +25,7 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
@@ -40,7 +40,7 @@
     <TextView
         android:id="@+id/textView5"
         android:layout_width="0dp"
-        android:layout_height="34dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
@@ -55,7 +55,7 @@
     <TextView
         android:id="@+id/textViewSDT"
         android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"

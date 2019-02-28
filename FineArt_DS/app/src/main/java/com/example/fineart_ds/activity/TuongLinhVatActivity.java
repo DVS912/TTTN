@@ -51,22 +51,22 @@ public class TuongLinhVatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tuong_linh_vat);
-        toolbarTuongLinhVat=findViewById(R.id.toolbarTuongLinhVat);
-        listViewTuongLinhVat=findViewById(R.id.listviewTuongLinhVat);
+        toolbarTuongLinhVat = findViewById(R.id.toolbarTuongLinhVat);
+        listViewTuongLinhVat = findViewById(R.id.listviewTuongLinhVat);
         arrayListTuongLinhVat = new ArrayList<>();
         tuongLinhVatAdapter = new TuongLinhVatAdapter(getApplicationContext(), arrayListTuongLinhVat);
         listViewTuongLinhVat.setAdapter(tuongLinhVatAdapter);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         footerView = inflater.inflate(R.layout.progressbar, null);
 
-        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+        if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             getIDProductType();
             actionToolbar();
             getData(page);
             loadmoreData();
             mHandler = new mHandler();
 
-        }else {
+        } else {
             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
             finish();
         }
@@ -74,14 +74,22 @@ public class TuongLinhVatActivity extends AppCompatActivity {
     }
 
     private void loadmoreData() {
-       // listViewTuongLinhVat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-       //     @Override
-       //     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       //         Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
-       //         intent.putExtra("productProperty", arrayListTuongLinhVat.get(position));
-       //         startActivity(intent);
-       //     }
-       // });
+        listViewTuongLinhVat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("TTT", arrayListTuongLinhVat.get(position));
+                intent.putExtra("BUN", bundle);
+//              intent.putExtra("productProperty", arrayListTuongLinhVat.get(position).getProductName());
+//                intent.putExtra("productDescriptionTG",arrayListTuongLinhVat.get(position).getProductDescription());
+//                intent.putExtra("productImgTG",arrayListTuongLinhVat.get(position).getProductImage());
+//                intent.putExtra("productPriceTG",arrayListTuongLinhVat.get(position).getProductPrice());
+//                intent.putExtra("productTypeIDTG",arrayListTuongLinhVat.get(position).getProductTypeID());
+
+                startActivity(intent);
+            }
+        });
         listViewTuongLinhVat.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -90,7 +98,7 @@ public class TuongLinhVatActivity extends AppCompatActivity {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0 && isLoading ==false && limitData == false){
+                if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0 && isLoading == false && limitData == false) {
                     isLoading = true;
                     ThreadData threadData = new ThreadData();
                     threadData.start();
@@ -101,7 +109,7 @@ public class TuongLinhVatActivity extends AppCompatActivity {
 
     private void getData(int Page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String url = Server.urlLoadProduct+String.valueOf(page);
+        String url = Server.urlLoadProduct + String.valueOf(page);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -109,18 +117,18 @@ public class TuongLinhVatActivity extends AppCompatActivity {
                 String name = "";
                 String price = "";
                 String image = "";
-                String mota ="";
+                String mota = "";
                 int idloaisanpham = 0;
-                if(response != null && response.length() != 2){
+                if (response != null && response.length() != 2) {
                     listViewTuongLinhVat.removeFooterView(footerView);
                     try {
                         JSONArray jsonArray = new JSONArray(response);
-                        for(int i = 0; i<jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            id= jsonObject.getInt("product_id");
-                            name =jsonObject.getString("product_name");
-                            price =jsonObject.getString("product_price");
-                            image =jsonObject.getString("product_image");
+                            id = jsonObject.getInt("product_id");
+                            name = jsonObject.getString("product_name");
+                            price = jsonObject.getString("product_price");
+                            image = jsonObject.getString("product_image");
                             mota = jsonObject.getString("product_description");
                             idloaisanpham = jsonObject.getInt("product_type_id");
 
@@ -130,10 +138,10 @@ public class TuongLinhVatActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else {
+                } else {
                     limitData = true;
                     listViewTuongLinhVat.removeFooterView(footerView);
-                    CheckConnection.showToast(getApplicationContext(),"Đã hết dữ liệu !");
+                    CheckConnection.showToast(getApplicationContext(), "Đã hết dữ liệu !");
                 }
             }
         }, new Response.ErrorListener() {
@@ -141,12 +149,12 @@ public class TuongLinhVatActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> param;
                 param = new HashMap<String, String>();
-                param.put("product_type_id",String.valueOf(idTuongLinhVat));
+                param.put("product_type_id", String.valueOf(idTuongLinhVat));
                 return param;
             }
         };
@@ -166,13 +174,13 @@ public class TuongLinhVatActivity extends AppCompatActivity {
 
     private void getIDProductType() {
         idTuongLinhVat = getIntent().getIntExtra("product_type_id", -1);
-        Log.d("giatriloaisp", idTuongLinhVat+"");
+        Log.d("giatriloaisp", idTuongLinhVat + "");
     }
 
-    public class mHandler extends Handler{
+    public class mHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case 0:
                     listViewTuongLinhVat.addFooterView(footerView);
                     break;
@@ -185,7 +193,7 @@ public class TuongLinhVatActivity extends AppCompatActivity {
         }
     }
 
-    public class ThreadData extends Thread{
+    public class ThreadData extends Thread {
         @Override
         public void run() {
             mHandler.sendEmptyMessage(0);

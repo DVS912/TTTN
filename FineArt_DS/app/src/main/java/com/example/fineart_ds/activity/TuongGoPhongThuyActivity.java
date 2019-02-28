@@ -52,8 +52,8 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tuong_go_phong_thuy);
-        toolbarTuongGo=findViewById(R.id.toolbarTuongGoPhongThuy);
-        listViewTuongGo=findViewById(R.id.listviewTuongGoPhongThuy);
+        toolbarTuongGo = findViewById(R.id.toolbarTuongGoPhongThuy);
+        listViewTuongGo = findViewById(R.id.listviewTuongGoPhongThuy);
         arrayListTuongGo = new ArrayList<>();
         tuongGoPhongThuyAdapter = new TuongGoPhongThuyAdapter(getApplicationContext(), arrayListTuongGo);
         listViewTuongGo.setAdapter(tuongGoPhongThuyAdapter);
@@ -61,14 +61,14 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
         footerView = inflater.inflate(R.layout.progressbar, null);
 
 
-        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+        if (CheckConnection.haveNetworkConnection(getApplicationContext())) {
             getIDProductType();
             actionToolbar();
             getData(page);
             loadmoreData();
             mHandler = new mHandler();
 
-        }else {
+        } else {
             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
             finish();
         }
@@ -80,12 +80,9 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
-                intent.putExtra("productProperty", arrayListTuongGo.get(position));
-                intent.putExtra("productNameTG",arrayListTuongGo.get(position).getProductName());
-                intent.putExtra("productDescriptionTG",arrayListTuongGo.get(position).getProductDescription());
-                intent.putExtra("productImgTG",arrayListTuongGo.get(position).getProductImage());
-                intent.putExtra("productPriceTG",arrayListTuongGo.get(position).getProductPrice());
-                intent.putExtra("productTypeIDTG",arrayListTuongGo.get(position).getProductTypeID());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("TTT", arrayListTuongGo.get(position));
+                intent.putExtra("BUN", bundle);
 
                 startActivity(intent);
             }
@@ -98,7 +95,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0 && isLoading ==false && limitData == false){
+                if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount != 0 && isLoading == false && limitData == false) {
                     isLoading = true;
                     ThreadData threadData = new ThreadData();
                     threadData.start();
@@ -109,7 +106,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
 
     private void getData(int Page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String url = Server.urlLoadProduct+String.valueOf(page);
+        String url = Server.urlLoadProduct + String.valueOf(page);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -117,18 +114,18 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
                 String name = "";
                 String price = "";
                 String image = "";
-                String mota ="";
+                String mota = "";
                 int idloaisanpham = 0;
-                if(response != null && response.length() != 2){
+                if (response != null && response.length() != 2) {
                     listViewTuongGo.removeFooterView(footerView);
                     try {
                         JSONArray jsonArray = new JSONArray(response);
-                        for(int i = 0; i<jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            id= jsonObject.getInt("product_id");
-                            name =jsonObject.getString("product_name");
-                            price =jsonObject.getString("product_price");
-                            image =jsonObject.getString("product_image");
+                            id = jsonObject.getInt("product_id");
+                            name = jsonObject.getString("product_name");
+                            price = jsonObject.getString("product_price");
+                            image = jsonObject.getString("product_image");
                             mota = jsonObject.getString("product_description");
                             idloaisanpham = jsonObject.getInt("product_type_id");
 
@@ -138,10 +135,10 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else {
+                } else {
                     limitData = true;
                     listViewTuongGo.removeFooterView(footerView);
-                    CheckConnection.showToast(getApplicationContext(),"Đã hết dữ liệu !");
+                    CheckConnection.showToast(getApplicationContext(), "Đã hết dữ liệu !");
                 }
             }
         }, new Response.ErrorListener() {
@@ -149,12 +146,12 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> param;
                 param = new HashMap<String, String>();
-                param.put("product_type_id",String.valueOf(idTuongGo));
+                param.put("product_type_id", String.valueOf(idTuongGo));
                 return param;
             }
         };
@@ -174,13 +171,13 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
 
     private void getIDProductType() {
         idTuongGo = getIntent().getIntExtra("product_type_id", -1);
-        Log.d("giatriloaisp", idTuongGo+"");
+        Log.d("giatriloaisp", idTuongGo + "");
     }
 
-    public class mHandler extends Handler{
+    public class mHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case 0:
                     listViewTuongGo.addFooterView(footerView);
                     break;
@@ -193,7 +190,7 @@ public class TuongGoPhongThuyActivity extends AppCompatActivity {
         }
     }
 
-    public class ThreadData extends Thread{
+    public class ThreadData extends Thread {
         @Override
         public void run() {
             mHandler.sendEmptyMessage(0);

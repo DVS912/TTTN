@@ -74,14 +74,17 @@ public class LocBinhPhongThuyActivity extends AppCompatActivity {
     }
 
     private void loadmoreData() {
-      //  listViewLocBinhPhongThuy.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-      //      @Override
-      //      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-      //          Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
-      //          intent.putExtra("productProperty", arrayListLocBinhPhongThuy.get(position));
-      //          startActivity(intent);
-      //      }
-      //  });
+        listViewLocBinhPhongThuy.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ProductProperty.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("TTT", arrayListLocBinhPhongThuy.get(position));
+                intent.putExtra("BUN", bundle);
+
+                startActivity(intent);
+            }
+        });
         listViewLocBinhPhongThuy.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
