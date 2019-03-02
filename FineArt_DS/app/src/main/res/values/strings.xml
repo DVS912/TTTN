@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">FineArt_DS</string>
+    <string name="chinh_sach">- Với hơn 15 năm kinh nghiệm trong lĩnh vực kinh doanh online ( bán hàng trực tuyến trên internet), các sản phẩm nội thất, đồ gỗ theo phong cách cổ điển của chúng tôi vinh dự được phục vụ hàng chục ngàn gia đình trên khắp dải đất hình chữ S, khắp ba miền Bắc, Trung, Nam.
+- Tất cả các sản phẩm chúng tôi có đều được đưa lên website  vì vậy quý khách yên tâm trong việc đặt hàng.
+ - Khi đặt hàng, Quý khách vui lòng cung cấp đầy đủ và chính xác các thông tin theo yêu cầu để tạo điều kiện thuận lợi cho chúng tôi trong việc xử lý và thực hiện đơn hàng. Chúng tôi sẽ liên lạc cho quý khách ngay khi bộ phận tiếp nhận và xử lý đơn hàng nhận được đơn hàng của quý khách.
+</string>
+    <string name="doi_hang"> Đổi hàng: Chúng tôi chỉ đổi các sản phẩm giá tương đương hoặc cao hơn. Mong quý khách thông cảm.
+- Trường hợp đổi hàng, quý khách hàng phải chịu toàn bộ chi phí vận chuyển.</string>
+    <string name="dam_bao">Nhằm đảm bảo an tâm cho quý khách khi mua hàng và thanh toán, chúng tôi cam kết:
+ - Cam kết sản phẩm được bán đúng với  hình ảnh mô tả.
+ - Hoàn trả tiền nếu giao nhầm hoặc sản phẩm không đúng như hình ảnh, mô tả.</string>
+    <string name="van_chuyen"> - Chúng tôi miễn phí vận chuyển đối với khách hàng thuộc khu vực Tp.HCM hoặc nhỏ hơn 20 km.
+- Đối với khách hàng ngoài khu vực Hà Nội và các tỉnh lân cận, chúng tôi có xe giao hàng tận nhà cho quý khách với mức cước vận chuyển ưu đãi, tiết kiệm. Thời gian vận chuyển từ 4 đến 5 ngày.
+-  Đối với khách hàng tại các tỉnh thuộc khu vực miền Nam, chúng tôi có xe giao hàng tận nhà, cước phí tùy theo nơi. Thời gian giao hàng từ 1 đến 2 ngày.</string>
+
 </resources>
