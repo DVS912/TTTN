@@ -1,111 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:background="#95D6D1"
+    android:layout_gravity="center"
     android:layout_height="match_parent">
 
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="321dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Tên người dùng"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText6"
-        android:layout_width="321dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
+        android:id="@+id/mEdtTenKhach"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:hint="Tên khách hàng"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/mEdtDiaChi"
+        android:layout_marginTop="10dp"
         android:hint="Địa chỉ"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
-
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <EditText
-        android:id="@+id/editText7"
-        android:layout_width="321dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
+        android:id="@+id/mEdtSDT"
+        android:layout_marginTop="10dp"
         android:hint="Số điện thoại"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
-
+        android:inputType="number"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <EditText
-        android:id="@+id/editText8"
-        android:layout_width="321dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Tên hàng"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        android:id="@+id/mEdtTenHang"
+        android:layout_marginTop="10dp"
+        android:hint="Tên sản phẩm"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:padding="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Số lượng"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/mBtnTru"
+            android:background="#fff"
+            android:layout_marginLeft="10dp"
+            android:text="-"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="#000"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <EditText
+            android:id="@+id/mEdtSoluong"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000"
+            android:text="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <Button
+            android:id="@+id/mBtnCong"
+            android:layout_marginLeft="10dp"
+            android:background="#fff"
+            android:text="+"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="#000"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
 
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="321dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Số lượng hàng"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="30dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/buttonXacNhan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Xác nhận"
-        app:layout_constraintEnd_toStartOf="@+id/buttonHuy"
-        app:layout_constraintHorizontal_bias="0.744"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        <Button
+            android:id="@+id/buttonHuy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Hủy"
+            />
+        <Button
+            android:id="@+id/buttonXacNhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Xác nhận" />
 
-    <Button
-        android:id="@+id/buttonHuy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:text="Hủy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="318dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="20dp"
-        android:text="Tổng tiền"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
