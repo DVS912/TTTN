@@ -19,7 +19,6 @@ import com.example.fineart_ds.model.Product;
 import com.squareup.picasso.Picasso;
 
 public class ProductProperty extends AppCompatActivity {
-
     Button btnMuaHang;
     String product;
     TextView txtTen,txtGia,txtdes,txttype;
@@ -37,6 +36,7 @@ public class ProductProperty extends AppCompatActivity {
         txttype = findViewById(R.id.textViewTrangThai);
         imgSP = findViewById(R.id.imageViewSP);
         toolbar = findViewById(R.id.toolbarViewSP);
+        actionToolbar();
 
         // Nhận dữ liệu từ tìm kiếm Tượng gỗ phong thủy
         Intent intent1 = getIntent();

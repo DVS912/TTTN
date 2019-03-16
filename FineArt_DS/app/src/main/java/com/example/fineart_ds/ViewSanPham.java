@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 public class ViewSanPham extends AppCompatActivity {
-
+    Toolbar toolbar;
     Button btnMuaHang;
     String product;
     TextView txtTen,txtGia,txtdes,txttype;
@@ -30,7 +31,8 @@ public class ViewSanPham extends AppCompatActivity {
         txtdes = findViewById(R.id.textViewDiaChi);
         txttype = findViewById(R.id.textViewTrangThai);
         imgSP = findViewById(R.id.imageViewSP);
-
+        toolbar = findViewById(R.id.toolbarViewSP);
+        actionToolbar();
 
         //Nhận dữ liệu từ Main
         Intent intent = getIntent();
@@ -40,6 +42,7 @@ public class ViewSanPham extends AppCompatActivity {
         //txttype.setText(intent.getStringExtra("productTypeID").toString());
         Uri uri = Uri.parse(intent.getStringExtra("productImg").toString());
         Picasso.with(this).load(uri).into(imgSP);
+
 
 
 
@@ -74,5 +77,16 @@ public class ViewSanPham extends AppCompatActivity {
 
 
 
+    }
+
+    private void actionToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

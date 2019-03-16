@@ -30,6 +30,8 @@
         <activity android:name=".activity.TranhGoActivity" />
         <activity android:name=".activity.TuongLinhVatActivity" />
         <activity android:name=".activity.TuongGoPhongThuyActivity" />
+        <activity android:name=".activity.BanGheActivity" />
+        <activity android:name=".activity.TuKeTiviActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
