@@ -20,7 +20,7 @@
         <activity android:name=".ChinhSach"></activity>
         <activity android:name=".NguoiDung" />
         <activity android:name=".User" />
-        <activity android:name=".Registration" />
+        <activity android:name=".RegistrationActivity" />
         <activity android:name=".ViewSanPham" />
         <activity android:name=".activity.ProductProperty" />
         <activity android:name=".activity.LoginActivity" />

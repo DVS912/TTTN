@@ -41,7 +41,6 @@ public class ViewSanPham extends AppCompatActivity {
         txtTen = findViewById(R.id.textViewTenSP);
         txtGia = findViewById(R.id.textViewGiaTien);
         txtdes = findViewById(R.id.textViewDiaChi);
-        txttype = findViewById(R.id.textViewTrangThai);
         imgSP = findViewById(R.id.imageViewSP);
         toolbar = findViewById(R.id.toolbarViewSP);
         actionToolbar();
@@ -63,10 +62,10 @@ public class ViewSanPham extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(ViewSanPham.this);
-                dialog.setTitle("Xác nhận thông tin");
+
                 //TextView txtTitle = dialog.findViewById(R.id.title);
                 //Toast.makeText(ViewSanPham.this, " xxx  "+txtTitle.getText(), Toast.LENGTH_SHORT).show();
-
+                dialog.setTitle("Xác nhận thông tin");
                 dialog.setContentView(R.layout.custom_dialog_mua_hang);
                 Button btnXacNhan = dialog.findViewById(R.id.buttonXacNhan);
                 final EditText mEdtTenhang = dialog.findViewById(R.id.mEdtTenHang);

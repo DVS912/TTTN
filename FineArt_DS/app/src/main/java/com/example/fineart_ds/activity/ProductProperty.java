@@ -45,7 +45,6 @@ public class ProductProperty extends AppCompatActivity {
         txtTen = findViewById(R.id.textViewTenSP);
         txtGia = findViewById(R.id.textViewGiaTien);
         txtdes = findViewById(R.id.textViewDiaChi);
-        txttype = findViewById(R.id.textViewTrangThai);
         imgSP = findViewById(R.id.imageViewSP);
         toolbar = findViewById(R.id.toolbarViewSP);
         actionToolbar();

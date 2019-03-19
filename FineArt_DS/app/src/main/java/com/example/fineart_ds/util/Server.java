@@ -5,4 +5,5 @@ public class Server {
     public static String urlProductType = "http://" + host + "/getproducttype.php";
     public static String urlNewProduct = "http://" + host + "/getnewproduct.php";
     public static String urlLoadProduct = "http://" + host + "/getproduct.php?page=";
+    public static String urlGetCustomer = "http://" + host + "/getCustomer.php";
 }

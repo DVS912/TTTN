@@ -34,6 +34,7 @@
                     <ImageView
                         android:id="@+id/imageViewNewProduct"
                         android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
                         android:layout_weight="1.3"
                         android:layout_margin="6dp"
                         android:layout_width="100dp"
