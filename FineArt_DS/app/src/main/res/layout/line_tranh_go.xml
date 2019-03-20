@@ -29,9 +29,13 @@
                 <TextView
                     android:id="@+id/textViewTranhGo"
                     android:text="Tên sp"
+                    android:textSize="17sp"
+                    android:maxLines="1"
+                    android:fontFamily="@font/rubik"
+                    android:ellipsize="end"
                     android:textColor="#11B119"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -39,9 +43,12 @@
                     android:id="@+id/textViewGiaTranhGo"
                     android:text="Giá sp"
                     android:layout_margin="5dp"
+                    android:textSize="13sp"
+                    android:maxLines="1"
+                    android:fontFamily="@font/rubik"
+                    android:ellipsize="end"
                     android:textColor="#CF5C26"
                     android:textStyle="bold"
-                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -51,7 +58,10 @@
                     android:layout_margin="5dp"
                     android:textColor="#613838"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
+                    android:maxLines="1"
+                    android:fontFamily="@font/rubik"
+                    android:ellipsize="end"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

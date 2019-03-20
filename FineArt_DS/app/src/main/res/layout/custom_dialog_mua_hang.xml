@@ -5,19 +5,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#95D6D1"
+    android:background="@drawable/ic_radius_20"
     android:layout_gravity="center"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
 
+    <TextView
+        android:text="Xác nhận thông tin"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:fontFamily="@font/rubik"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/mEdtTenKhach"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:hint="Tên khách hàng"
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -26,7 +34,6 @@
         android:hint="Địa chỉ"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -36,7 +43,6 @@
         android:inputType="number"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -45,14 +51,12 @@
         android:hint="Tên sản phẩm"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:padding="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -97,7 +101,6 @@
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -116,7 +119,6 @@
             android:id="@+id/buttonXacNhan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:text="Xác nhận" />
 
     </LinearLayout>

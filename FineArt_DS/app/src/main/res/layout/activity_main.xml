@@ -2,60 +2,66 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:orientation="vertical">
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/homeToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Gỗ Mỹ Nghệ VN"
-                android:background="#ff00"></android.support.v7.widget.Toolbar>
+                android:background="#ff00"
+                app:title="Gỗ Mỹ Nghệ VN" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <ViewFlipper
                 android:id="@+id/viewFlipper"
                 android:layout_width="match_parent"
-                android:layout_height="195dp">
-
-            </ViewFlipper>
+                android:layout_height="150dp"></ViewFlipper>
             <LinearLayout
-                android:background="#80A821"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#80A821"
                 android:orientation="vertical">
                 <TextView
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
                     android:text="Sản phẩm mới nhất"
-                    android:layout_gravity="center"/>
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recViewHome">
-                </android.support.v7.widget.RecyclerView>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
                 <GridView
                     android:id="@+id/GripViewSanPham"
                     android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
                     android:numColumns="2"
-                    android:layout_height="match_parent"/>
+                    />
             </LinearLayout>
+            </LinearLayout>
+
+
         </LinearLayout>
+
+
         <android.support.design.widget.NavigationView
             android:id="@+id/naviView"
-            android:layout_gravity="start"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+
             <ListView
                 android:id="@+id/listHome"
                 android:layout_width="match_parent"

@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         toolbar=findViewById(R.id.homeToolbar);
-        recHome=findViewById(R.id.recViewHome);
         viewFlipper=findViewById(R.id.viewFlipper);
         navigationView=findViewById(R.id.naviView);
         listHome=findViewById(R.id.listHome);
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         arrayListProductType.add(0,new ProductType(0, "Trang Chính",
                 "http://gomynghevn.com/image/icon/home_icon.png"));
         arrayListProductType.add(1,new ProductType(0, "Đăng nhập",
-                "http://gomynghevn.com/image/icon/login_icon.png"));
+                "http://gomynghevn.com/image/icon/login.png"));
         productTypeAdapter = new ProductTypeAdapter(arrayListProductType, getApplicationContext());
         listHome.setAdapter(productTypeAdapter);
 
@@ -413,7 +412,7 @@ public class MainActivity extends AppCompatActivity {
                     arrayListProductType.add(i+2,new ProductType(0, "Chính sách thanh toán và vận chuyển",
                             "http://gomynghevn.com/image/icon/chinh_sach_van_chuyen.png"));
                     arrayListProductType.add(i+3,new ProductType(0, "Thông tin liên hệ",
-                            "http://gomynghevn.com/image/icon/info_icon.jpg"));
+                            "http://gomynghevn.com/image/icon/info.png"));
                 }
             }
         }, new Response.ErrorListener() {

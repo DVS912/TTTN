@@ -46,17 +46,19 @@
             <ImageView
                 android:id="@+id/imageViewSP"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginTop="5dp"
                 />
 
             <TextView
                 android:id="@+id/textViewTenSP"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/rubik"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Ten san pham"
                 android:textColor="#0b0b0b"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,12 +68,14 @@
                 <TextView
                     android:id="@+id/textViewGiaTien"
                     android:gravity="right"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:paddingRight="20dp"
                     android:layout_height="wrap_content"
                     android:text="Gia tien"
+                    android:fontFamily="@font/rubik"
                     android:textColor="#f40808"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <TextView
@@ -79,9 +83,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
-                android:text="Dia chi mua hang"
+                android:text="Mô tả"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/rubik"
                 android:textDirection="firstStrong"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/buttonMuaHang"
