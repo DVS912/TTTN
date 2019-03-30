@@ -19,7 +19,7 @@
                 android:id="@+id/homeToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#ff00"
+                android:background="#AF8C4D"
                 app:title="Gỗ Mỹ Nghệ VN" />
 
             <LinearLayout
@@ -30,26 +30,35 @@
                 android:id="@+id/viewFlipper"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"></ViewFlipper>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#80A821"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:text="Sản phẩm mới nhất"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-                <GridView
-                    android:id="@+id/GripViewSanPham"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:numColumns="2"
-                    />
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:text="Sản phẩm mới nhất"
+                        android:textColor="#000"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#000" />
+
+                    <GridView
+                        android:id="@+id/GripViewSanPham"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:numColumns="2" />
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -58,6 +67,7 @@
 
         <android.support.design.widget.NavigationView
             android:id="@+id/naviView"
+            android:background="@drawable/ic_radius_right_20"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start">

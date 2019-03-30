@@ -7,6 +7,13 @@ public class MyPreferenceHelper {
     private static final String NEWS_ADS_PREFERENCES = "Cao_Duong";
     public static String ACOUNT = "ACOUNT";
     public static String PASSWORD = "PASSWORD";
+    public static String NAME = "NAME";
+    public static String ADDRESS = "ADDRESS";
+    public static String PHONE = "PHONE";
+    public static String CHINHSACH = "CHINHSACH";
+    public static String DAMBAO = "DAMBAO";
+    public static String DOITRA = "DOITRA";
+    public static String VANCHUYEN = "VANCHUYEN";
 
     public static String getString(String key, Context context) {
         return getStringValue(key, context);

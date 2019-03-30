@@ -1,7 +1,13 @@
 package com.example.fineart_ds;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -71,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
     ProductAdapter productAdapter;
     GridView gridSanPham;
     CustomAdapterSanPham customAdapterSanPham;
-
+    private final int RECORD_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
+        Permission();
         toolbar=findViewById(R.id.homeToolbar);
         viewFlipper=findViewById(R.id.viewFlipper);
         navigationView=findViewById(R.id.naviView);
@@ -140,8 +147,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (position){
                     case 0:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                            startActivity(intent);
+                            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                            toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
                         }
@@ -325,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case 17:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
-                            Intent intent = new Intent(MainActivity.this, ChinhSach.class);
+                            Intent intent = new Intent(MainActivity.this, ChinhSachActivity.class);
                             startActivity(intent);
                         }else {
                             CheckConnection.showToast(getApplicationContext(), "Vui lòng kiểm tra lại kết nối internet !");
@@ -432,6 +440,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
+//                drawerLayout.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
             }
         });
     }
@@ -455,6 +465,22 @@ public class MainActivity extends AppCompatActivity {
 //        Animation animation_slide_out = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_out_right);
 //        viewFlipper.setInAnimation(animation_slide_out);
     }
+
+    private void Permission(){
+        int permission_call_phone = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE);
+
+        if (permission_call_phone != PackageManager.PERMISSION_GRANTED) {
+            makeRequest();
+        }
+
+    }
+
+    private void makeRequest() {
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.CALL_PHONE}, RECORD_REQUEST_CODE);
+    }
+
 
 
 }

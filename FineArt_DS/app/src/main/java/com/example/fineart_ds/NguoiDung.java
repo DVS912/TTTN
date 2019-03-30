@@ -1,17 +1,25 @@
 package com.example.fineart_ds;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
@@ -43,8 +51,10 @@ import java.util.Map;
 public class NguoiDung extends AppCompatActivity {
 
     private EditText mEdtName , mEdtPass, mEdtAddress;
-    private TextView mTvPhone;
+    private TextView mTvPhone, mTvSuaThongTin, mTvLichSu;
+    private LinearLayout mLnThongTin, mLnLichSu;
     private ImageView mImgBackHome;
+    private ImageView mImgDelete;
     private ListView listViewProduct;
     private ArrayList<String> listHis;
     private ArrayList<ProductHis> productArrayList;
@@ -62,20 +72,69 @@ public class NguoiDung extends AppCompatActivity {
         mTvPhone = findViewById(R.id.mTvPhone);
         mBtnUpdate = findViewById(R.id.mBtnUpdate);
         listViewProduct = findViewById(R.id.mLvHistory);
+        mTvSuaThongTin = findViewById(R.id.mTvSuaThongTin);
+        mTvLichSu = findViewById(R.id.mTvLichSu);
+        mLnThongTin = findViewById(R.id.mLnThongTin);
+        mLnLichSu = findViewById(R.id.mLnLichSu);
+        mImgDelete = findViewById(R.id.mImgDelete);
+        mTvSuaThongTin.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                mLnThongTin.setVisibility(View.VISIBLE);
+                mLnLichSu.setVisibility(View.GONE);
+                mTvLichSu.setTextColor(getResources().getColor(R.color.colorGray));
+                mTvSuaThongTin.setTextColor(getResources().getColor(R.color.colorBack));
+            }
+        });
+        mTvLichSu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLnThongTin.setVisibility(View.GONE);
+                mLnLichSu.setVisibility(View.VISIBLE);
+                mTvSuaThongTin.setTextColor(getResources().getColor(R.color.colorGray));
+                mTvLichSu.setTextColor(getResources().getColor(R.color.colorBack));
+                getBill(listHis);
+            }
+        });
         productArrayList = new ArrayList<ProductHis>();
         historyAdapter = new HistoryAdapter(getApplicationContext(), productArrayList);
         listViewProduct.setAdapter(historyAdapter);
         listHis = new ArrayList<>();
-
+//        mImgDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(NguoiDung.this, "Xóa", Toast.LENGTH_SHORT).show();
+//            }
+//        });
         listViewProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ProductHis pro = (ProductHis) listViewProduct.getItemAtPosition(position);
-                String name  = pro.getNameProduct();
-                Log.e("abc",name);
-                String phone = mTvPhone.getText().toString().trim();
-                deleteBill(name,phone);
-                historyAdapter.notifyDataSetChanged();
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(NguoiDung.this);
+                dialog.setTitle("Xác nhận");
+                dialog.setIcon(R.drawable.hoi_cham);
+
+                dialog.setMessage("Bạn có muốn xóa không ?");
+                dialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ProductHis pro = (ProductHis) listViewProduct.getItemAtPosition(position);
+                        String name  = pro.getNameProduct();
+                        String phone = mTvPhone.getText().toString().trim();
+                        deleteBill(name,phone);
+                        historyAdapter.notifyDataSetChanged();
+                        restartActivity(NguoiDung.this);
+                    }
+                });
+                dialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+
+
             }
         });
 
@@ -83,7 +142,7 @@ public class NguoiDung extends AppCompatActivity {
         Intent intent = getIntent();
         int id = (int) intent.getIntExtra("key",0);
         getCustomer(id);
-        getBill(listHis);
+//        getBill(listHis);
         mBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +150,14 @@ public class NguoiDung extends AppCompatActivity {
             }
         });
 
+    }
+    public static void restartActivity(Activity activity) {
+        if (Build.VERSION.SDK_INT >= 11) {
+            activity.recreate();
+        } else {
+            activity.finish();
+            activity.startActivity(activity.getIntent());
+        }
     }
     private void  getCustomer(final int id) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -115,6 +182,9 @@ public class NguoiDung extends AppCompatActivity {
 //                                Toast.makeText(NguoiDung.this, jsonObject.getString("customer_password"), Toast.LENGTH_SHORT).show();
                                 mEdtPass.setText(jsonObject.getString("customer_password"));
                                 mTvPhone.setText(jsonObject.getString("customer_phone"));
+                                MyPreferenceHelper.setString(getApplicationContext(),MyPreferenceHelper.NAME,jsonObject.getString("customer_name"));
+                                MyPreferenceHelper.setString(getApplicationContext(),MyPreferenceHelper.PHONE,jsonObject.getString("customer_phone"));
+                                MyPreferenceHelper.setString(getApplicationContext(),MyPreferenceHelper.ADDRESS,jsonObject.getString("customer_address"));
                                 break;
                             }
 
@@ -280,6 +350,7 @@ public class NguoiDung extends AppCompatActivity {
                 String address = mEdtAddress.getText().toString().trim();
                     if(response.equals("success")){
                         Toast.makeText(NguoiDung.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+
                     }else {
                         Toast.makeText(NguoiDung.this, "Không xóa được lịch sử", Toast.LENGTH_SHORT).show();
 

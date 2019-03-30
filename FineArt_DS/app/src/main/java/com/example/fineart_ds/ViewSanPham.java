@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fineart_ds.util.MyPreferenceHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -73,11 +74,33 @@ public class ViewSanPham extends AppCompatActivity {
                 dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 dialog.setContentView(R.layout.custom_dialog_mua_hang);
                 Button btnXacNhan = dialog.findViewById(R.id.buttonXacNhan);
+//                Intent intent1 = getIntent();
+//                String name = intent1.getStringExtra("ten");
+//                String diachi = intent1.getStringExtra("diachi");
+
                 final EditText mEdtTenhang = dialog.findViewById(R.id.mEdtTenHang);
                 String tenhang= txtTen.getText().toString();
                 final EditText  mEdtTenKhach = dialog.findViewById(R.id.mEdtTenKhach);
                 final EditText mEdtDiachi = dialog.findViewById(R.id.mEdtDiaChi);
                 final EditText mEdtSodienThoai = dialog.findViewById(R.id.mEdtSDT);
+
+                // lấy thông tin từ trang thông tin khách hàng
+                try {
+                    String name = MyPreferenceHelper.getString(MyPreferenceHelper.NAME, getApplicationContext());
+                    String phone = MyPreferenceHelper.getString(MyPreferenceHelper.PHONE, getApplicationContext());
+                    String address = MyPreferenceHelper.getString(MyPreferenceHelper.ADDRESS, getApplicationContext());
+
+                    if (name.isEmpty() || phone.isEmpty() || address.isEmpty()) {
+                        Toast.makeText(ViewSanPham.this, "không có thông tin tài khoản", Toast.LENGTH_SHORT).show();
+                    } else {
+                        mEdtTenKhach.setText(name);
+                        mEdtSodienThoai.setText(phone);
+                        mEdtDiachi.setText(address);
+                    }
+                }catch (Exception e){
+                    Toast.makeText(ViewSanPham.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
                 mEdtTenhang.setText(tenhang);
                 Button btnHuy = dialog.findViewById(R.id.buttonHuy);
                 Button mBtnTru = dialog.findViewById(R.id.mBtnTru);

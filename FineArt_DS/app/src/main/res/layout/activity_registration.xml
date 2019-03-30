@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B5E7E2"
+    android:background="@drawable/ic_bg_register"
     android:orientation="vertical"
     tools:context=".RegistrationActivity">
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đăng Ký"
-        android:textColor="#ff11"
-        android:textSize="30sp"
+        android:text="Đăng ký"
+        android:textColor="#fff"
+        android:textStyle="italic|bold"
+        android:textSize="40sp"
         />
 
     <EditText
@@ -26,31 +27,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Tài khoản"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/ic_radius_20_white"
         android:inputType="textPersonName"
         />
 
     <EditText
         android:padding="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/mEdtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/ic_radius_20_white"
         android:hint="Mật khẩu"
         android:inputType="textPassword"
         />
 
     <EditText
         android:padding="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/mEdtAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/ic_radius_20_white"
         android:hint="Địa chỉ"
         android:inputType="textPersonName"
         />
     <EditText
         android:padding="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/ic_radius_20_white"
         android:id="@+id/mEdtPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,14 +80,20 @@
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/mBtnHuy"
-            android:padding="10dp"
+           android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:background="@drawable/ic_radius_20_gray"
             android:text="Hủy"
+            android:textColor="#fff"
             android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/mBtnCheck"
-            android:padding="10dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textColor="#fff"
+            android:background="@drawable/ic_radius_20_gray"
             android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

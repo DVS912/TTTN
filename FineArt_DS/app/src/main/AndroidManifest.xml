@@ -4,10 +4,11 @@
     package="com.example.fineart_ds">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.BIND_INCALL_SERVICE"
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission
+        android:name="android.permission.BIND_INCALL_SERVICE"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -17,7 +18,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ChinhSach"></activity>
+        <activity android:name=".activity.LoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ChinhSachActivity" />
         <activity android:name=".NguoiDung" />
         <activity android:name=".User" />
         <activity android:name=".RegistrationActivity" />
@@ -33,11 +41,7 @@
         <activity android:name=".activity.BanGheActivity" />
         <activity android:name=".activity.TuKeTiviActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

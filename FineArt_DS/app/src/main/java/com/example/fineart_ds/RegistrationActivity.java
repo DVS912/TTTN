@@ -76,7 +76,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 number.equals("039")){
                             getCustomer(phone);
                         }else{
-                            Toast.makeText(RegistrationActivity.this, "Đầu số sai. Nhập số viettel", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistrationActivity.this, "Số điện thoại không chính xác", Toast.LENGTH_SHORT).show();
                         }
 
                     }else {
@@ -118,7 +118,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     if (check == 0){
                         insertCustomer();
-                        check = 0;
+                        finish();
 
                     } else {
                         Toast.makeText(RegistrationActivity.this, "Số điện thoại đã được đăng ký", Toast.LENGTH_SHORT).show();
