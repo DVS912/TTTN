@@ -7,29 +7,35 @@
     android:layout_height="match_parent"
     tools:context="com.example.fineart_ds.activity.ProductProperty">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarViewSP"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#AF8C4D"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="#fff">
-        <TextView
-            android:paddingLeft="10dp"
-            android:textStyle="bold"
-            android:textSize="24sp"
-            android:text="Thông tin chi tiết"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:background="#C7AF85"
+        android:orientation="horizontal">
 
-    </android.support.v7.widget.Toolbar>
+        <ImageView
+            android:id="@+id/mImgBackHomePP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/ic_shape" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/rubik"
+            android:padding="5dp"
+            android:text="Thông tin chi tiết"
+            android:textColor="#000"
+            android:alpha="0.87"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_weight="1"
@@ -91,13 +97,13 @@
 
             <Button
                 android:id="@+id/buttonMuaHang"
+                android:background="@drawable/ic_radius_red"
                 android:layout_width="280dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="50dp"
-                android:background="#ff00"
-                android:text="Mua Hang"
+                android:text="Mua Hàng"
                 android:textColor="#fff" />
         </LinearLayout>
     </ScrollView>

@@ -87,7 +87,7 @@ public class InfoActivity extends AppCompatActivity {
                             mTvDiaChi.setText(jsonObject.getString("user_address"));
                             mTvEmail.setText(jsonObject.getString("user_email"));
                             txtSDT.setText(jsonObject.getString("user_phone"));
-
+                            break;
 
                         } catch (JSONException e) {
                             e.printStackTrace();

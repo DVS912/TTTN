@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg_register"
+    android:background="@drawable/ic_bg_login"
     android:orientation="vertical"
     tools:context="com.example.fineart_ds.activity.LoginActivity">
 
@@ -34,30 +34,57 @@
             android:textSize="40sp"
             android:textStyle="italic|bold" />
 
-        <EditText
-            android:id="@+id/editTextTaiKhoan"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/ic_radius_20_white"
-            android:hint="Nhập tài khoản"
-            android:padding="10dp"
-            android:textSize="20sp" />
+            android:background="@drawable/ic_radius_20_white">
 
-        <EditText
-            android:id="@+id/editTextMatKhau"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_phone_android_black_24dp" />
+
+            <EditText
+                android:id="@+id/editTextTaiKhoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_marginRight="10dp"
+                android:hint="Nhập số điện thoại"
+                android:padding="10dp"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/ic_radius_20_white"
-            android:hint="Nhập mật khẩu"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:textSize="20sp" />
+            android:background="@drawable/ic_radius_20_white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_https_black_24dp" />
+
+            <EditText
+                android:id="@+id/editTextMatKhau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:hint="Nhập mật khẩu"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewQuenMK"
@@ -124,18 +151,31 @@
             android:textSize="35sp"
             android:textStyle="italic|bold" />
 
-        <EditText
-            android:id="@+id/editTextPhone"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="60dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/ic_radius_20_white"
-            android:hint="Nhập số điện thoại"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textSize="20sp" />
+            android:background="@drawable/ic_radius_20_white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_phone_android_black_24dp" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:hint="Nhập số điện thoại"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,45 +183,48 @@
             android:layout_marginTop="20dp">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textViewDangNhap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="30dp"
-                android:paddingTop="5dp"
-                android:paddingRight="5dp"
-                android:paddingLeft="5dp"
-                android:text="Đăng nhập"
-                android:textColor="#000"
-                android:textSize="15sp"
-                android:textStyle="italic"
-                />
-            <View
-                android:layout_width="70dp"
-                android:layout_height="1dp"
-                android:layout_marginLeft="35dp"
-                android:background="#494948" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewDangNhap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="30dp"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Đăng nhập"
+                    android:textColor="#F7F3F3"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="35dp"
+                    android:background="#D61313" />
             </LinearLayout>
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="1" />
+
             <Button
                 android:id="@+id/mBtnQuenMK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|bottom"
                 android:layout_marginTop="10dp"
-                android:paddingRight="30dp"
-                android:paddingLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/ic_radius_20_gray"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:text="Xác Nhận"
-                android:textColor="#fff" />
+                android:textColor="#F5F1F1" />
         </LinearLayout>
     </LinearLayout>
 

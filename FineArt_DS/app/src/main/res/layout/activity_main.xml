@@ -19,7 +19,7 @@
                 android:id="@+id/homeToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#AF8C4D"
+                android:background="#C7AF85"
                 app:title="Gỗ Mỹ Nghệ VN" />
 
             <LinearLayout
@@ -45,7 +45,7 @@
                         android:text="Sản phẩm mới nhất"
                         android:textColor="#000"
                         android:textSize="22sp"
-                        android:textStyle="bold" />
+                        />
 
                     <View
                         android:layout_width="match_parent"
@@ -71,7 +71,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start">
-
             <ListView
                 android:id="@+id/listHome"
                 android:layout_width="match_parent"

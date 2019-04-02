@@ -408,7 +408,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = response.getJSONObject(i);
                             productTypeID = jsonObject.getInt("product_type_id");
-                            productTypeName = jsonObject.getString("product_type_name");
+                            productTypeName = jsonObject.getString("product_type_name").trim();
                             productTypeImage = jsonObject.getString("product_type_image");
                             arrayListProductType.add(new ProductType(productTypeID, productTypeName, productTypeImage));
                             productTypeAdapter.notifyDataSetChanged();

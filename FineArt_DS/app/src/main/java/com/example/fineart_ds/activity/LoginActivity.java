@@ -183,34 +183,30 @@ public class LoginActivity extends AppCompatActivity {
         });
         requestQueue.add(jsonArrayRequest);
     }
-    private void  getCustomer(final String acount , final String pass) {
+    private void  getCustomer(final String phone , final String pass) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.urlGetCustomer, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
-                try {
-                    Log.e("AMBE12030405", response.getJSONObject(0).getString("customer_name")+ " aaaa");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 if(response != null){
 
                     for(int i = 0; i<response.length(); i++){
                         try {
                             JSONObject jsonObject = response.getJSONObject(i);
 
-                            if (acount.equals(jsonObject.getString("customer_name")) &&
+                            if (phone.equals(jsonObject.getString("customer_phone")) &&
                             pass.equals(jsonObject.getString("customer_password"))){
                                 check =1;
                                 if(mCBSave.isChecked()) {
-                                    MyPreferenceHelper.setString(LoginActivity.this, "ACOUNT", acount);
+                                    MyPreferenceHelper.setString(LoginActivity.this, "ACOUNT", phone);
                                     MyPreferenceHelper.setString(LoginActivity.this, "PASSWORD", pass);
                                 }
                                 int id = jsonObject.getInt("customer_id");
                                 Intent intent = new Intent(LoginActivity.this, NguoiDung.class);
                                 intent.putExtra("key", id );
                                 startActivity(intent);
+                                finish();
                                 break;
                             }
 

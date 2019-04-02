@@ -37,7 +37,7 @@ public class ProductProperty extends AppCompatActivity {
     Button btnMuaHang;
     String product;
     TextView txtTen,txtGia,txtdes,txttype;
-    ImageView imgSP;
+    ImageView imgSP, mImgBackPP;
     Toolbar toolbar;
     String url="http://gomynghevn.com/insertBuyProduct.php";
 
@@ -50,18 +50,16 @@ public class ProductProperty extends AppCompatActivity {
         txtGia = findViewById(R.id.textViewGiaTien);
         txtdes = findViewById(R.id.textViewDiaChi);
         imgSP = findViewById(R.id.imageViewSP);
-        toolbar = findViewById(R.id.toolbarViewSP);
-        actionToolbar();
+        mImgBackPP =findViewById(R.id.mImgBackHomePP);
+        mImgBackPP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // Nhận dữ liệu từ tìm kiếm Tượng gỗ phong thủy
         Intent intent1 = getIntent();
-//        txtTen.setText(intent1.getStringExtra("productNameTG").toString());
-//        txtGia.setText(intent1.getStringExtra("productPriceTG").toString());
-//        txtdes.setText(intent1.getStringExtra("productDescriptionTG").toString());
-//        //txttype.setText(intent.getStringExtra("productTypeID").toString());
-//        Uri uriTG = Uri.parse(intent1.getStringExtra("productImgTG").toString());
-//        Picasso.with(this).load(uriTG).into(imgSP);
-
         Bundle bundle=intent1.getBundleExtra("BUN");
         Product product= (Product) bundle.getSerializable("TTT");
 
@@ -78,8 +76,6 @@ public class ProductProperty extends AppCompatActivity {
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(ProductProperty.this);
                 dialog.setTitle("Xác nhận thông tin");
-                //TextView txtTitle = dialog.findViewById(R.id.title);
-                //Toast.makeText(ViewSanPham.this, " xxx  "+txtTitle.getText(), Toast.LENGTH_SHORT).show();
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 dialog.setContentView(R.layout.custom_dialog_mua_hang);
@@ -195,14 +191,5 @@ public class ProductProperty extends AppCompatActivity {
 
 
     }
-    private void actionToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
+
 }

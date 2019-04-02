@@ -14,6 +14,7 @@ public class MyPreferenceHelper {
     public static String DAMBAO = "DAMBAO";
     public static String DOITRA = "DOITRA";
     public static String VANCHUYEN = "VANCHUYEN";
+    public static String IMAGE = "IMAGE";
 
     public static String getString(String key, Context context) {
         return getStringValue(key, context);
@@ -34,6 +35,6 @@ public class MyPreferenceHelper {
     public static String getStringValue(String key, Context context) {
         SharedPreferences pref = context.getSharedPreferences(
                 NEWS_ADS_PREFERENCES, 0);
-        return pref.getString(key, null);
+        return pref.getString(key, "");
     }
 }

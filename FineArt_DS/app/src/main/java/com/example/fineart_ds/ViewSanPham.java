@@ -31,10 +31,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ViewSanPham extends AppCompatActivity {
-    Toolbar toolbar;
+
     Button btnMuaHang;
     TextView txtTen,txtGia,txtdes,txttype;
-    ImageView imgSP;
+    ImageView imgSP, mImgBackTT;
     String url="http://gomynghevn.com/insertBuyProduct.php";
 
     @Override
@@ -46,10 +46,7 @@ public class ViewSanPham extends AppCompatActivity {
         txtGia = findViewById(R.id.textViewGiaTien);
         txtdes = findViewById(R.id.textViewDiaChi);
         imgSP = findViewById(R.id.imageViewSP);
-        toolbar = findViewById(R.id.toolbarViewSP);
-
-        actionToolbar();
-
+        mImgBackTT = findViewById(R.id.mImgBackHomeTT);
         //Nhận dữ liệu từ Main
         Intent intent = getIntent();
         txtTen.setText(intent.getStringExtra("productName").toString());
@@ -59,7 +56,12 @@ public class ViewSanPham extends AppCompatActivity {
         Uri uri = Uri.parse(intent.getStringExtra("productImg").toString());
         Picasso.with(this).load(uri).into(imgSP);
 
-
+        mImgBackTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
 
@@ -67,17 +69,10 @@ public class ViewSanPham extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(ViewSanPham.this);
-
-                //TextView txtTitle = dialog.findViewById(R.id.title);
-                //Toast.makeText(ViewSanPham.this, " xxx  "+txtTitle.getText(), Toast.LENGTH_SHORT).show();
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 dialog.setContentView(R.layout.custom_dialog_mua_hang);
                 Button btnXacNhan = dialog.findViewById(R.id.buttonXacNhan);
-//                Intent intent1 = getIntent();
-//                String name = intent1.getStringExtra("ten");
-//                String diachi = intent1.getStringExtra("diachi");
-
                 final EditText mEdtTenhang = dialog.findViewById(R.id.mEdtTenHang);
                 String tenhang= txtTen.getText().toString();
                 final EditText  mEdtTenKhach = dialog.findViewById(R.id.mEdtTenKhach);
@@ -189,14 +184,5 @@ public class ViewSanPham extends AppCompatActivity {
 
     }
 
-    private void actionToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
+
 }
